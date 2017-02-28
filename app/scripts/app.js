@@ -2,58 +2,46 @@
 
 var router = Sammy('#content', function () {
   let $content = $('#content');
+
   let requester = new Requester();
-  let testData = new TestData(requester);
-  let template = new HandlebarsTemplates();
+  let template = new HandlebarsTemplate();
 
-  let testController = new TestController(testData, template);
+  let userData = new UserData(requester);
 
-  this.get('#/', function (context) {
+  let userController = new UserController(userData, template);
+
+  this.get('/', function (context) {
     context.redirect('#/home');
   });
 
   this.get('#/home', function (context) {
-
+    $content.html('<h1>Welcome home</h1>');
   });
 
-  this.get('#/aaa', function (context) {
-    console.log('aaa');
+  this.get('#/register', function (context) {
+    userController.loadRegisterTemplate($content, context);
+  });
 
-    testController.aaa($content);
+  this.get('#/login', function (context) {
+    userController.loadLoginTemplate($content, context);
+  });
+
+    this.get('#/update-settings', function (context) {
+    userController.loadUpdateSettingsTemplate($content, context);
   });
 });
-$('#register').submit(function (evt) {
 
-  evt.preventDefault();
-  var formData = new FormData($(this)[0]);
-  let requester = new Requester();
-  requester.postWithFile('http://localhost:1337/api/auth/register', formData)
-    .then(console.log);
 
-  // $.ajax({
-  //   url: 'http://localhost:1337/api/auth/register',
-  //   type: 'POST',
-  //   data: formData,
-  //   async: false,
-  //   cache: false,
-  //   contentType: false,
-  //   enctype: 'multipart/form-data',
-  //   processData: false,
-  //   success: function (response) {
-  //     console.log(response);
-  //   }
-  // });
-  return false;
-});
-$('#login').submit(function () {
-  $.post($(this).attr('action'), $(this).serialize(), function (json) {
-    localStorage.setItem('jwt-token', json.token);
-  }, 'json');
-  return false;
-});
-$('#logout').submit(function () {
-  let requester = new Requester();
-  requester.postJSON('http://localhost:1337/api/auth/logout', {});
-  return false;
-});
+// $('#logout').submit(function () {
+//   let requester = new Requester();
+//   requester
+//     .postJSON('http://localhost:1337/api/auth/logout', { username: 'kur za tebe' })
+//     .then((rez) => {
+//       console.log(rez);
+
+//       requester.getJSON('http://localhost:1337/api/auth/getLoggedUser')
+//         .then(console.log);
+//     });
+//   return false;
+// });
 router.run('#/');

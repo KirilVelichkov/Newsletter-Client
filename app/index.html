@@ -19,53 +19,23 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-      crossorigin="anonymous"></script>
+      <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <ul>
+    <li><a href="#/home">Home</a></li>
+    <li><a href="#/register">Register</a></li>
+    <li><a href="#/update-settings">Update settings</a></li>
+    <li><a href="#/login">Login</a></li>
+  </ul>
 
   <main id="content">
 
   </main>
-  <h1>Register</h1>
-  <form id="register" action="http://localhost:1337/api/auth/register" method="POST" enctype="multipart/form-data">
 
-
-    <input type="text" name="username" id="username" placeholder="Username"><br/>
-    <input type="email" name="email" id="email" placeholder="Email Address"><br/>
-    <input type="text" name="password" id="password" placeholder="Password"><br/>
-    <input type="text" name="confirmedPassword" id="confirmedPassword" placeholder="Confirm Password">
-    <input type="file" name="avatar" id="avatar"><br/>
-
-    <input type="submit" value="submit">
-  </form>
-  <h1>Settings update</h1>
-  <form action="http://localhost:1337/user/settings/update" method="POST" enctype="multipart/form-data">
-    <input type="file" name="avatar" id="avatar"><br/>
-
-    <input type="text" name="firstname" id="firstname" placeholder="firstname"><br/>
-    <input type="text" name="lastname" id="lastname" placeholder="lastname"><br/>
-    <input type="text" name="oldPassword" id="oldPassword" placeholder="oldPassword"><br/>
-    <input type="text" name="newPassword" id="newPassword" placeholder="newPassword"><br/>
-    <input type="text" name="confirmedNewPassword" id="confirmedNewPassword" placeholder="confirmedNewPassword">
-
-
-    <input type="submit" value="submit">
-
-  </form>
-  <h1>Login</h1>
-  <form id="login" action="http://localhost:1337/api/auth/login" method="POST">
-    <input type="text" name="username" id="username" placeholder="username"><br/>
-    <input type="text" name="password" id="password" placeholder="password"><br/>
-
-    <input type="submit" class="btn btn-success" value="submit">
-  </form>
-  <h1>logout</h1>
-  <form id="logout" action="http://localhost:1337/api/auth/logout" method="POST">
-    <input type="submit" value="LOGOUT">
-  </form>
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
     (function (b, o, i, l, e, r) {
@@ -93,9 +63,9 @@
 
   <!-- build:js scripts/main.js -->
   <script src="./scripts/utils/requester.js"></script>
-  <script src="./scripts/data/testData.js"></script>
+  <script src="./scripts/data/userData.js"></script>
   <script src="./scripts/utils/templates.js"></script>
-  <script src="./scripts/controllers/testController.js"></script>
+  <script src="./scripts/controllers/UserController.js"></script>
 
   <script src="./scripts/app.js"></script>
   <!-- endbuild -->

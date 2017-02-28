@@ -45,7 +45,7 @@ class Requester {
         let token = window.localStorage.getItem('jwt-token');
 
         let promise = new Promise((resolve, reject) => {
-            var headers = options.headers || {};
+            let headers = options.headers || {};
             headers.authrorization = token;
 
             $.ajax({
@@ -76,7 +76,32 @@ class Requester {
                 contentType: false,
                 enctype: 'multipart/form-data',
                 processData: false,
-                 success(response) {
+                success(response) {
+                    resolve(response);
+                },
+                error(err) {
+                    reject(err);
+                }
+            });
+        });
+    }
+
+    putWithFile(url, data) {
+        let token = window.localStorage.getItem('jwt-token');
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url,
+                headers: {
+                    'authorization': token
+                },
+                type: 'PUT',
+                data,
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                success(response) {
                     resolve(response);
                 },
                 error(err) {

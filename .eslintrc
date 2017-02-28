@@ -20,6 +20,7 @@
                 "before": true
             }
         ],
+
         "block-scoped-var": "off",
         "block-spacing": "off",
         "brace-style": "off",
@@ -225,7 +226,7 @@
         ],
         "require-jsdoc": "off",
         "rest-spread-spacing": "error",
-        "semi": "off",
+        "semi": "warn",
         "semi-spacing": "off",
         "sort-imports": "error",
         "sort-keys": "off",

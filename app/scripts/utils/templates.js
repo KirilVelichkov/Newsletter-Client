@@ -1,6 +1,6 @@
 const handlebars = handlebars || Handlebars;
 
-class HandlebarsTemplates {
+class HandlebarsTemplate {
     constructor(){
         this.cache = {};
     }
