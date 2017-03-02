@@ -1,90 +1,60 @@
-// bower:scss
-// endbower
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+@import 'variables';
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('../fonts/League_Gothic.otf');
+    
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+  background-image: url('../images/background.png');
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+header{
+  height: 200px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-right: 1rem;
-  padding-left: 1rem;
+.logo-holder{
+  position: relative;
+  left:20px;
+  top:80px;
 }
 
-/* Custom page header */
-.header {
-  padding-bottom: 1rem;
-  border-bottom: .05rem solid #e5e5e5;
+.navbar{
+  top:80px;
+  height: 50px;
+  background-color: transparent;
 }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 3rem;
+.nav-link {
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Arial";
+  color: $navbar-default-link-color !important;
+  font-size: 24px;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 1.5rem;
-  color: #777;
-  border-top: .05rem solid #e5e5e5;
+.nav-link-active{
+  color: $navbar-active-link-color !important;
 }
 
-/* Customize container */
-@media (min-width: 48em) {
-  .container {
-    max-width: 1600px;
-  }
-}
-.container-narrow > hr {
-  margin: 2rem 0;
+.navbar-toggler{
+   border-color:#dcc08e !important;
+   span{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(220, 192, 142, 01)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+   }
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: .05rem solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: .75rem 1.5rem;
-  font-size: 1.5rem;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 3rem 0;
-}
-.marketing p + h4 {
-  margin-top: 1.5rem;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 48em) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 2rem;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.search-box{
+  background:transparent url('../images/magnifiyng-glass.png') no-repeat scroll right center;
+  background-color: #1d1e1e;
+  border-bottom: 1px solid #202020 !important;
+  border-right: 1px solid #303030 !important;
+  border-radius: 3px;
+  width:166px;
+  margin: 10px;
+  height: 28px;
+  color:#909090;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: italic;
+  border:none;
 }
