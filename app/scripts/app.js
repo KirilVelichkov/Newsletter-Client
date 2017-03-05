@@ -1,21 +1,30 @@
 'use strict';
 
-var router = Sammy('#content', function () {
+var router = Sammy('#content', function (context) {
   let $content = $('#content');
+
 
   let requester = new Requester();
   let template = new HandlebarsTemplate();
 
+  let utils = new Utils(requester);
+  
   let userData = new UserData(requester);
+  let adminData = new AdminData(requester);
 
-  let userController = new UserController(userData, template);
+  let userController = new UserController(userData, template, utils);
+  let adminController = new AdminController(adminData, template);
 
   this.get('/', function (context) {
     context.redirect('#/home');
   });
 
   this.get('#/home', function (context) {
-    $content.html('<h1>Welcome home</h1>');
+
+  });
+
+  this.get('#/admin', function (context) {
+    adminController.loadAdminTemplate($content, context);
   });
 
   this.get('#/register', function (context) {
@@ -26,22 +35,17 @@ var router = Sammy('#content', function () {
     userController.loadLoginTemplate($content, context);
   });
 
-    this.get('#/update-settings', function (context) {
+  this.get('#/update-settings', function (context) {
     userController.loadUpdateSettingsTemplate($content, context);
   });
+
+  utils.toggleUserControlElements();
+
+  $('#logout').on('click', function () {
+    localStorage.removeItem('jwt-token');
+    utils.toggleUserControlElements();
+  });
+
 });
 
-
-// $('#logout').submit(function () {
-//   let requester = new Requester();
-//   requester
-//     .postJSON('http://localhost:1337/api/auth/logout', { username: 'kur za tebe' })
-//     .then((rez) => {
-//       console.log(rez);
-
-//       requester.getJSON('http://localhost:1337/api/auth/getLoggedUser')
-//         .then(console.log);
-//     });
-//   return false;
-// });
 router.run('#/');

@@ -20,7 +20,7 @@ header{
   top:80px;
 }
 
-.navbar{
+.navbar {
   top:80px;
   height: 50px;
   background-color: transparent;
@@ -30,9 +30,12 @@ header{
   font-family: "LeagueGothic","Helvetica Neue","Helvetica","Arial";
   color: $navbar-default-link-color !important;
   font-size: 24px;
+    &:hover {
+      color: $navbar-active-link-color !important;
+    }
 }
 
-.nav-link-active{
+.nav-link-active {
   color: $navbar-active-link-color !important;
 }
 
@@ -57,4 +60,8 @@ header{
   font-weight: bold;
   font-style: italic;
   border:none;
+}
+
+.hidden{
+  display: none;
 }

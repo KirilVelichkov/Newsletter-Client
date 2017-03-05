@@ -1,10 +1,10 @@
 'use strict';
-const REQUEST_URL = 'http://localhost:1337';
 
 class UserController {
-    constructor(userData, template) {
+    constructor(userData, template, utils) {
         this.userData = userData;
         this.template = template;
+        this.utils = utils;
     }
 
     loadRegisterTemplate(content, context) {
@@ -55,7 +55,10 @@ class UserController {
 
                             if (result.success) {
                                 localStorage.setItem('jwt-token', result.token);
+                                _this.utils.toggleUserControlElements();
                                 context.redirect('#/home');
+                            } else {
+                                alert('invalid username or password!');
                             }
                         });
 

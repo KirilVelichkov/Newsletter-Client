@@ -45,10 +45,19 @@
             <a class="nav-link" href="#">ENTERTAINMENT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ENTERTAINMENT</a>
+            <a class="nav-link nav-link-profile" href="#/register">MY PROFILE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ENTERTAINMENT</a>
+            <a class="nav-link nav-link-user-control" href="#/register">REGISTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-user-control" href="#/login">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-admin hidden" href="#/admin">ADMIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link hidden" href="#" id="logout">LOGOUT</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -94,10 +103,15 @@
   <!-- endbuild -->
 
   <!-- build:js scripts/main.js -->
+  <script src="./scripts/utils/utils.js"></script>
   <script src="./scripts/utils/requester.js"></script>
-  <script src="./scripts/data/userData.js"></script>
   <script src="./scripts/utils/templates.js"></script>
-  <script src="./scripts/controllers/UserController.js"></script>
+
+  <script src="./scripts/data/userData.js"></script>
+  <script src="./scripts/data/adminData.js"></script>
+
+  <script src="./scripts/controllers/userController.js"></script>
+  <script src="./scripts/controllers/adminController.js"></script>
 
   <script src="./scripts/app.js"></script>
   <!-- endbuild -->

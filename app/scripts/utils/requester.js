@@ -66,12 +66,16 @@ class Requester {
     }
 
     postWithFile(url, data) {
+        let token = window.localStorage.getItem('jwt-token');
         return new Promise((resolve, reject) => {
             $.ajax({
                 url,
                 type: 'POST',
                 data,
-                async: false,
+                headers: {
+                    'authorization': token
+                },
+                async: true,
                 cache: false,
                 contentType: false,
                 enctype: 'multipart/form-data',
@@ -96,7 +100,7 @@ class Requester {
                 },
                 type: 'PUT',
                 data,
-                async: false,
+                async: true,
                 cache: false,
                 contentType: false,
                 enctype: 'multipart/form-data',
@@ -119,8 +123,8 @@ class Requester {
         let promise = new Promise((resolve, reject) => {
             $.ajax({
                 url,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('authorization', token);
+                headers: {
+                    'Authorization': token
                 },
                 method: 'GET',
                 contentType: 'application/json',
