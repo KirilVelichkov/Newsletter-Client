@@ -16,13 +16,16 @@ class Utils {
 
             this.requester.getJSON('http://localhost:1337/api/auth/getLoggedUser')
                 .then((user) => {
-
                     if (user.roles.indexOf('admin') != -1) {
                         $('.nav-link-admin').removeClass('hidden');
                     }
+                })
+                .catch((result) => {
+                    $('.nav-link-user-control').removeClass('hidden');
+                    $('#logout').addClass('hidden');
+                    $('.nav-link-admin').addClass('hidden');
                 });
         } else {
-
             $('.nav-link-user-control').removeClass('hidden');
             $('#logout').addClass('hidden');
             $('.nav-link-admin').addClass('hidden');

@@ -3,24 +3,27 @@
 var router = Sammy('#content', function (context) {
   let $content = $('#content');
 
-
   let requester = new Requester();
   let template = new HandlebarsTemplate();
 
   let utils = new Utils(requester);
-  
+
   let userData = new UserData(requester);
   let adminData = new AdminData(requester);
+  let homeData = new HomeData(requester);
 
+  let homeController = new HomeController(homeData, template);
   let userController = new UserController(userData, template, utils);
   let adminController = new AdminController(adminData, template);
+
+
 
   this.get('/', function (context) {
     context.redirect('#/home');
   });
 
   this.get('#/home', function (context) {
-
+    homeController.loadHomePageTemplate($content, context);
   });
 
   this.get('#/admin', function (context) {

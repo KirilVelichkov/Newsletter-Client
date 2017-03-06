@@ -1,11 +1,6 @@
 @import 'variables';
-@font-face {
-    font-family: 'LeagueGothic';
-    src: url('../fonts/League_Gothic.otf');
-    
-    font-weight: normal;
-    font-style: normal;
-}
+@import 'fonts';
+
 body{
   background-image: url('../images/background.png');
 }
@@ -27,8 +22,9 @@ header{
 }
 
 .nav-link {
-  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Arial";
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
   color: $navbar-default-link-color !important;
+  text-shadow: 1px 1px black;
   font-size: 24px;
     &:hover {
       color: $navbar-active-link-color !important;
@@ -64,4 +60,236 @@ header{
 
 .hidden{
   display: none;
+}
+
+.articles-containter{
+  margin-left:25px;
+  margin-top:15px;
+}
+
+.articles-single-article{
+  cursor: pointer;
+  background-color:white;
+  box-shadow: 2px 2px black;
+  width:$single-article-width;
+  height:$single-article-height;
+  margin:13px;
+}
+
+.single-article-image-containter{
+  z-index: 0;
+  width:220px;
+  height:150px;
+  margin:5px 0px 5px 5px;
+  box-shadow: 0px 0px 1px 1px grey;
+  position:relative;
+}
+
+.single-article-category{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+  color:white;
+  text-shadow: 1px 1px black;
+  letter-spacing: 1px;
+  background-color:$main-theme-color;
+  display:inline-block;
+  padding: 1px 2px 1px 3px;
+  position:absolute;
+  right:0px;
+  top:0px;
+}
+
+.single-article-image{
+  width:100%;
+  height:100%;
+}
+
+.single-article-date{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+  color:white;
+  text-shadow: 1px 1px 1px grey, -1px -1px 1px grey;
+  position: absolute;
+  font-size: 32px;
+  top:20px;
+  right:10px;
+}
+
+.single-article-title{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+  color:$main-theme-color;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  font-size:32px;
+  letter-spacing: 1px;
+  margin-top:5px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.single-article-author{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+  color:#212121;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  font-size:18px;
+  letter-spacing: 1px;
+  margin-top:-10px;
+  margin-bottom:8px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.single-article-content{
+  font-family: Droid Sans;
+  font-size:13px;
+  color: #7a7575;
+  text-overflow:clip;
+  border-top: 1px dotted #a6a6a6; 
+  height: calc( 100% - 243px );
+  overflow:hidden;
+  padding: 10px 10px 0px 15px;
+}
+
+.bottom-line{
+  position:absolute;
+}
+
+@media (max-width: 980px) {
+  body{
+     width:980px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:45px;
+  }
+
+  header{
+    height:100px;
+  }
+  
+  .logo-holder{
+     top:0;
+     width:500px;
+    img{
+     margin-left:55px;
+     margin-top: 5px;
+     width:500px; 
+    } 
+  }
+  
+  .navbar{
+    position: absolute;
+    top:20px;
+    right:0;
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:65px;
+    background-color:#323232;
+  }
+
+  .nav-item{
+    margin-left:10px;
+  }
+}
+
+@media (max-width: 800px) {
+  body{
+     width:800px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:45px;
+  }
+
+  header{
+    height:100px;
+  }
+  
+  .logo-holder{
+     top:0;
+     width:500px;
+    img{
+     margin-left:55px;
+     margin-top: 5px;
+     width:500px; 
+    } 
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:65px;
+    background-color:#323232;
+  }
+}
+
+@media (max-width: 360px) {
+  body{
+     width:360px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:30px;
+  }
+
+  header{
+    height:50px;
+  } 
+  
+    .navbar{
+    position: absolute;
+    top:0;
+    right:0;
+  }
+
+  .logo-holder{
+     top:0;
+     width:250px;
+    img{
+     margin-left:0;
+     margin-top: 5px;
+     width:250px; 
+    } 
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:45px;
+    background-color:#323232;
+  }
+}
+
+@media (max-width: 320px) {
+  body{
+     width:320px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:5px;
+  }
+
+  header{
+    height:50px;
+  }
+  
+  .logo-holder{
+     top:0;
+     width:220px;
+    img{
+     margin-left:0;
+     margin-top: 5px;
+     width:220px; 
+    } 
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:45px;
+    background-color:#323232;
+  }
 }

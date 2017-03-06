@@ -8,8 +8,8 @@ class UserController {
     }
 
     loadRegisterTemplate(content, context) {
-        var $content = content;
-        var _this = this;
+        let $content = content;
+        let _this = this;
 
         this.template.getTemplate('register-template')
             .then((resultTemplate) => {
@@ -34,8 +34,8 @@ class UserController {
     }
 
     loadLoginTemplate(content, context) {
-        var $content = content;
-        var _this = this;
+        let $content = content;
+        let _this = this;
 
         this.template.getTemplate('login-template')
             .then((resultTemplate) => {
@@ -68,10 +68,10 @@ class UserController {
     }
 
     loadUpdateSettingsTemplate(content, context) {
-        var $content = content;
-        var _this = this;
+        let $content = content;
+        let _this = this;
 
-        this.template.getTemplate('update-settings-template')
+        _this.template.getTemplate('update-settings-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
 

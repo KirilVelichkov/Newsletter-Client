@@ -1,1 +1,31 @@
-<h1> Welcome home </h1>
+<div class="row articles-containter">
+    {{#each this}}
+    <div class="col- articles-single-article">
+        <a href="#/test">
+        <div class="single-article-image-containter">
+            <div class="single-article-category">
+                {{category}}
+            </div>
+            <img class="single-article-image" src="http://localhost:1337/api/article/image/{{image}}" />
+            <div class="single-article-date">
+                {{date}}
+            </div>
+        </div>
+
+        <div class="single-article-title">
+            {{title}}
+        </div>
+
+        <div class="single-article-author">
+            POSTED BY {{author}}
+        </div>
+
+        <div class="single-article-content">
+            {{content}}
+        </div>
+
+        <img class="bottom-line" src="../images/bottom-line.jpg">
+        </a>
+    </div>
+    {{/each}}
+</div>

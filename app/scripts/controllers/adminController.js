@@ -7,8 +7,8 @@ class AdminController {
     }
 
     loadAdminTemplate(content, context) {
-        var $content = content;
-        var _this = this;
+        let $content = content;
+        let _this = this;
 
         this.template.getTemplate('admin-template')
             .then((resultTemplate) => {
