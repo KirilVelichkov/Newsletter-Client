@@ -2,6 +2,7 @@
 @import 'fonts';
 
 body{
+  width:1320px;
   background-image: url('../images/background.png');
 }
 
@@ -9,14 +10,22 @@ header{
   height: 200px;
 }
 
+a {
+  outline: 0;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 .logo-holder{
   position: relative;
-  left:20px;
+  left:32px;
   top:80px;
 }
 
 .navbar {
   top:80px;
+  margin-left:12px;
   height: 50px;
   background-color: transparent;
 }
@@ -25,6 +34,7 @@ header{
   font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
   color: $navbar-default-link-color !important;
   text-shadow: 1px 1px black;
+  letter-spacing: 1px;
   font-size: 24px;
     &:hover {
       color: $navbar-active-link-color !important;
@@ -68,7 +78,6 @@ header{
 }
 
 .articles-single-article{
-  cursor: pointer;
   background-color:white;
   box-shadow: 2px 2px black;
   width:$single-article-width;
@@ -132,7 +141,7 @@ header{
   white-space: nowrap; 
   text-overflow: ellipsis;
   font-size:18px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-top:-10px;
   margin-bottom:8px;
   padding-right: 15px;
@@ -154,13 +163,41 @@ header{
   position:absolute;
 }
 
+.pagination-container{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+  margin-left:35px;
+  margin-right:25px;
+  text-shadow: 1px 1px black;
+  color: $navbar-default-link-color;
+
+  a{
+    color: $navbar-default-link-color;
+    &:hover{
+      color: $navbar-active-link-color;
+    }
+  }
+}
+
+#pages{
+  font-size: 24px;
+  margin-top: 15px;
+  a{
+    padding-left:10px;
+  }
+}
+
+#previous, #next{ 
+  font-size:40px;
+  width:50px !important;
+}
+
 @media (max-width: 980px) {
   body{
      width:980px;
      margin:0px;
   }
 
-  #content{
+  #content{ 
     margin-left:45px;
   }
 

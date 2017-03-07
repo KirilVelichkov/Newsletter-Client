@@ -1,5 +1,6 @@
 'use strict';
 
+
 var router = Sammy('#content', function (context) {
   let $content = $('#content');
 
@@ -15,8 +16,6 @@ var router = Sammy('#content', function (context) {
   let homeController = new HomeController(homeData, template);
   let userController = new UserController(userData, template, utils);
   let adminController = new AdminController(adminData, template);
-
-
 
   this.get('/', function (context) {
     context.redirect('#/home');

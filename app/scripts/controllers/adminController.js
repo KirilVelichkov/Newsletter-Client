@@ -21,6 +21,8 @@ class AdminController {
 
                     _this.adminData.createArticle(formData)
                         .then((result) => {
+                            console.log(result);
+                            
                             if (result.success) {
                                 $('#create-article-form')[0].reset();
                             }

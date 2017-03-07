@@ -1,14 +1,15 @@
 <div class="row articles-containter">
     {{#each this}}
     <div class="col- articles-single-article">
-        <a href="#/test">
         <div class="single-article-image-containter">
             <div class="single-article-category">
                 {{category}}
             </div>
-            <img class="single-article-image" src="http://localhost:1337/api/article/image/{{image}}" />
+            <a href="#/article/{{_id}}">
+                <img class="single-article-image" src="http://localhost:1337/api/article/image/{{image}}" />
+            </a>
             <div class="single-article-date">
-                {{date}}
+                {{date.month}} {{date.day}}
             </div>
         </div>
 
@@ -25,7 +26,23 @@
         </div>
 
         <img class="bottom-line" src="../images/bottom-line.jpg">
-        </a>
     </div>
     {{/each}}
+</div>
+
+<div class="row pagination-container no-gutters">
+    <div class="d-flex justify-content-start" id="previous">
+        <a href="#/1">«</a>
+    </div>
+
+    <div class="col d-flex justify-content-center" id="pages">
+        <a href="#/1">1</a>
+        <a href="#/1">2</a>
+        <a href="#/1">3</a>
+        <a href="#/1">4</a>
+    </div>
+
+    <div class="d-flex justify-content-end" id="next">
+        <a href="#/1">»</a>
+    </div>
 </div>
