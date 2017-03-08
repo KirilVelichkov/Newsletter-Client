@@ -14,6 +14,7 @@ class UserController {
         this.template.getTemplate('register-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
+                $('#username').focus();
 
                 $('#register-form').submit(function (evt) {
                     evt.preventDefault();
@@ -40,6 +41,7 @@ class UserController {
         this.template.getTemplate('login-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
+                $('#username').focus();
 
                 $('#login-form').submit(function (evt) {
                     evt.preventDefault();
@@ -74,7 +76,8 @@ class UserController {
         _this.template.getTemplate('update-settings-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
-
+                $('#email').focus();
+                
                 $('#updateSettings-form').submit(function (evt) {
                     evt.preventDefault();
 
@@ -85,7 +88,7 @@ class UserController {
                         .then((result) => {
                             console.log(result);
 
-
+                            context.redirect('#/home');
                         });
 
                     return false;

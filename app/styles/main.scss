@@ -12,9 +12,22 @@ header{
 
 a {
   outline: 0;
+  text-decoration: none;
   &:hover{
     text-decoration: none;
   }
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+input[type="file"] {
+  border:1px solid red;
+  opacity: 0;
+  z-index: -1;
+  overflow: hidden;
+  width: 0.1px !important;
+  height: 0.1px !important;
 }
 
 .logo-holder{
@@ -53,10 +66,12 @@ a {
 }
 
 .search-box{
+  font-family: Droid Sans;
   background:transparent url('../images/magnifiyng-glass.png') no-repeat scroll right center;
   background-color: #1d1e1e;
   border-bottom: 1px solid #202020 !important;
   border-right: 1px solid #303030 !important;
+  text-shadow: 1px 1px black  !important;
   border-radius: 3px;
   width:166px;
   margin: 10px;
@@ -69,12 +84,97 @@ a {
 }
 
 .hidden{
-  display: none;
+  display: none !important;
 }
+
+.sitemap{
+    color:#686767;
+    margin-left: 20px;
+    font-family: Droid Sans !important;
+    text-shadow: 1px 1px black  !important;
+    a{
+      color:#686767;
+    }
+}
+
+.breadcrumb{
+  background-color: transparent;
+}
+
+.breadcrumb > li + li:before {
+    color: #686767 !important;
+    content: " » " !important;
+    padding: 0 5px !important;
+}
+
 
 .articles-containter{
   margin-left:25px;
   margin-top:15px;
+}
+
+.btn-custom{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif"  !important;
+  font-size: 20px;
+  color: $navbar-default-link-color !important;
+  background-color: $main-theme-color !important;
+  text-shadow: 1px 1px black  !important;
+  letter-spacing: 2px !important;
+  cursor:pointer;
+  height:43px;
+
+  &:hover{
+    background-color: #8c5d00 !important;
+    opacity: 1;
+  }
+}
+
+.btn-submit-form{
+  font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif"  !important;
+  font-size: 20px;
+  height:43px;
+  color: $navbar-default-link-color !important;
+  text-shadow: 1px 1px black  !important;
+  letter-spacing: 2px !important;
+  cursor:pointer;
+  width:150px !important;
+  margin-bottom: 7px;
+}
+
+.register-container, 
+.login-container, 
+.update-settings-container,
+.admin-panel-container{
+  margin-left:35px;
+  margin-top:15px;
+}
+
+#register-form, 
+#login-form, 
+#updateSettings-form,
+#create-article-form{
+  h3{
+    font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif"  !important;
+    color: $navbar-active-link-color !important;
+    text-shadow: 1px 1px black  !important;
+    letter-spacing: 2px !important;
+  }
+  input{
+    width:250px;
+  }
+  div{
+    label{
+      font-family: "LeagueGothic","Helvetica Neue","Helvetica","Sans Serif";
+      color:white;
+      font-size: 20px;
+      text-shadow: 1px 1px black;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+#title, #tags{
+  width:100% !important;
 }
 
 .articles-single-article{
@@ -191,10 +291,15 @@ a {
   width:50px !important;
 }
 
+
 @media (max-width: 980px) {
   body{
      width:980px;
      margin:0px;
+  }
+  
+  .sitemap{
+    display:none;
   }
 
   #content{ 
@@ -230,11 +335,13 @@ a {
   .nav-item{
     margin-left:10px;
   }
+
 }
+
 
 @media (max-width: 800px) {
   body{
-     width:800px;
+     width:768px;
      margin:0px;
   }
 
@@ -259,6 +366,74 @@ a {
   .navbar-collapse{
     z-index: 1;
     margin-top:65px;
+    background-color:#323232;
+  }
+}
+
+@media (max-width: 660px) {
+  body{
+     width:576px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:15px;
+  }
+
+  header{
+    height:100px;
+  }
+  
+  .logo-holder{
+     top:0;
+     width:400px;
+    img{
+     margin-left:15px;
+     margin-top: 5px;
+     width:400px; 
+    } 
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:65px;
+    background-color:#323232;
+  }
+}
+
+@media (max-width: 375px) {
+  body{
+     width:375px;
+     margin:0px;
+  }
+
+  #content{
+    margin-left:30px;
+  }
+
+  header{
+    height:50px;
+  } 
+  
+  .navbar{
+    position: absolute;
+    top:0;
+    right:0;
+  }
+
+  .logo-holder{
+     top:0;
+     width:250px;
+    img{
+     margin-left:0;
+     margin-top: 5px;
+     width:250px; 
+    } 
+  }
+
+  .navbar-collapse{
+    z-index: 1;
+    margin-top:45px;
     background-color:#323232;
   }
 }
@@ -316,11 +491,11 @@ a {
   
   .logo-holder{
      top:0;
-     width:220px;
+     width:210px;
     img{
      margin-left:0;
      margin-top: 5px;
-     width:220px; 
+     width:210px; 
     } 
   }
 

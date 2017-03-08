@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>NewsLetter</title>
 
-  <link type="image/x-icon" rel="icon"  href="/images/favicon.ico">
+  <link type="image/x-icon" rel="icon" href="/images/favicon.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
 
@@ -39,10 +39,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link nav-link-active" href="#">HOME <span class="sr-only">(current)</span></a>
+            <a class="nav-link nav-link-active" href="#">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ENTERTAINMENT</a>
+            <a class="nav-link" href="#/home/category/ENTERTAINMENT">ENTERTAINMENT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/home/category/SPORT">SPORT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/home/category/POLITICS">POLITICS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/home/category/HEALTH">HEALTH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/home/category/TECHNOLOGY">TECHNOLOGY</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-profile" href="#/profile">MY PROFILE</a>
@@ -61,17 +73,11 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="search-box mr-sm-2" type="text" placeholder="Search this website...">
+          <input class="search-box mr-sm-2" id="search-box" type="text" placeholder="Search this website...">
         </form>
       </div>
     </nav>
   </header>
-  <!--<ul>
-    <li><a href="#/home">Home</a></li>
-    <li><a href="#/register">Register</a></li>
-    <li><a href="#/update-settings">Update settings</a></li>
-    <li><a href="#/login">Login</a></li>
-  </ul>-->
 
   <main id="content">
 
@@ -108,10 +114,12 @@
   <script src="./scripts/utils/templates.js"></script>
 
   <script src="./scripts/data/homeData.js"></script>
+  <script src="./scripts/data/articleData.js"></script>
   <script src="./scripts/data/userData.js"></script>
   <script src="./scripts/data/adminData.js"></script>
 
   <script src="./scripts/controllers/homeController.js"></script>
+  <script src="./scripts/controllers/articleController.js"></script>
   <script src="./scripts/controllers/userController.js"></script>
   <script src="./scripts/controllers/adminController.js"></script>
 

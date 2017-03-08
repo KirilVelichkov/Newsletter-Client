@@ -1,4 +1,5 @@
 'use strict';
+const REQUEST_URL = 'http://localhost:1337';
 
 class Requester {
     get(url) {
@@ -23,7 +24,7 @@ class Requester {
             var headers = options.headers || {};
             headers.authrorization = token;
             $.ajax({
-                url,
+                url: REQUEST_URL + url,
                 headers,
                 method: 'PUT',
                 contentType: 'application/json',
@@ -49,7 +50,7 @@ class Requester {
             headers.authrorization = token;
 
             $.ajax({
-                url,
+                url: REQUEST_URL + url,
                 headers,
                 method: 'POST',
                 contentType: 'application/json',
@@ -67,9 +68,10 @@ class Requester {
 
     postWithFile(url, data) {
         let token = window.localStorage.getItem('jwt-token');
+
         return new Promise((resolve, reject) => {
             $.ajax({
-                url,
+                url: REQUEST_URL + url,
                 type: 'POST',
                 data,
                 headers: {
@@ -92,9 +94,10 @@ class Requester {
 
     putWithFile(url, data) {
         let token = window.localStorage.getItem('jwt-token');
+
         return new Promise((resolve, reject) => {
             $.ajax({
-                url,
+                url: REQUEST_URL + url,
                 headers: {
                     'authorization': token
                 },
@@ -116,13 +119,11 @@ class Requester {
     }
 
     getJSON(url) {
-        //send token to the server
-
         let token = window.localStorage.getItem('jwt-token');
 
         let promise = new Promise((resolve, reject) => {
             $.ajax({
-                url,
+                url: REQUEST_URL + url,
                 headers: {
                     'Authorization': token
                 },

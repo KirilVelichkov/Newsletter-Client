@@ -1,10 +1,26 @@
-<h1>Settings update</h1>
-<form id="updateSettings-form">
-    <input type="file" name="avatar" id="avatar"><br/>
+<div class="row update-settings-container">
+    <div class="col-">
+        <form id="updateSettings-form">
+            <h3>UPDATE USER SETTINGS</h3>
 
-    <input type="text" name="email" id="email" placeholder="email"><br/>
-    <input type="text" name="currentPassword" id="currentPassword" placeholder="oldPassword"><br/>
-    <input type="text" name="newPassword" id="newPassword" placeholder="newPassword"><br/>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+            </div>
 
-    <input type="submit" value="submit">
-</form>
+            <div class="form-group">
+                <label for="currentPassword">Current password</label>
+                <input type="text" class="form-control" name="currentPassword" id="currentPassword" placeholder="Current password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newPassword">New password</label>
+                <input type="text" class="form-control" name="newPassword" id="newPassword" placeholder="New password" required>
+            </div>
+
+            <label for="avatar" class="btn btn-custom">AVATAR</label>
+            <input type="file" name="avatar" id="avatar" required>
+            <input type="submit" class="btn btn-success btn-submit-form" value="UPDATE">
+        </form>
+    </div>
+</div>

@@ -1,22 +1,37 @@
-<h1 style="color:white">ADMIN PANEL</h1>
+<div class="row admin-panel-container">
+    <div class="col-">
 
-<form id="create-article-form">
-    <label style="color:white">TITLE</label><input type="text" name="title" id="title"><br>
-    <label style="color:white">CONTENT</label><textarea rows="4" cols="50" name="content" id="content"></textarea><br>
-    <select id="category" name="category">
-  <option value="SPORT">Sport</option>
-  <option value="ENTERTAINMENT">Entertainment</option><br>
-</select>
-    <input type="file" name="image" id="image">
+        <form id="create-article-form">
 
-    <input type="submit" value="CREATE">
-</form>
-<!-- 
-    <div class="container">   
-        <ol class="breadcrumb breadcumb-custom">
-            <li class="breadcrumb-item"><i class="fa fa-home" aria-hidden="true"></i></li>
-            <li class="breadcrumb-item"><a href="#/home">Home</a></li>
-            <li class="breadcrumb-item active">Register</li>
-        </ol>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea rows="4" class="form-control" cols="50" name="content" id="content"></textarea>
+            </div>
+
+              <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" class="form-control" name="tags" id="tags">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" class="form-control">
+                    <option value="SPORT">Sport</option>
+                    <option value="ENTERTAINMENT">Entertainment</option>
+                    <option value="POLITICS">Politics</option>
+                    <option value="HEALTH">Health</option>
+                    <option value="TECHNOLOGY">Technology</option>
+                </select>
+            </div>
+
+            <label for="image" class="btn btn-custom">IMAGE</label>
+            <input type="file" name="image" id="image" required>
+            <input type="submit" class="btn btn-success btn-submit-form" value="CREATE">
+        </form>
     </div>
--->
+</div>

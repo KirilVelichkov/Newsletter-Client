@@ -1,5 +1,4 @@
 'use strict';
-const REQUEST_URL = 'http://localhost:1337';
 
 class AdminData {
     constructor(requester) {
@@ -7,6 +6,6 @@ class AdminData {
     }
 
     createArticle(data) {
-        return this.requester.postWithFile(REQUEST_URL + '/api/article/create', data);
+        return this.requester.postWithFile('/api/article/create', data);
     }
 }

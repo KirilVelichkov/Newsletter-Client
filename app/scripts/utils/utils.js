@@ -14,7 +14,7 @@ class Utils {
             $('.nav-link-user-control').addClass('hidden');
             $('#logout').removeClass('hidden');
 
-            this.requester.getJSON('http://localhost:1337/api/auth/getLoggedUser')
+            this.requester.getJSON('/api/auth/getLoggedUser')
                 .then((user) => {
                     if (user.roles.indexOf('admin') != -1) {
                         $('.nav-link-admin').removeClass('hidden');
@@ -30,5 +30,9 @@ class Utils {
             $('#logout').addClass('hidden');
             $('.nav-link-admin').addClass('hidden');
         }
+    }
+
+    getUserRoles(){
+        return this.requester.getJSON('/api/auth/getUserRoles');
     }
 }

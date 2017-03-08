@@ -1,5 +1,4 @@
 'use strict';
-const REQUEST_URL = 'http://localhost:1337';
 
 class HomeData {
     constructor(requester) {
@@ -7,6 +6,14 @@ class HomeData {
     }
 
     getAllArticles() {
-        return this.requester.getJSON(REQUEST_URL + '/api/article/all');
+        return this.requester.getJSON('/api/article/all');
+    }
+
+    getFilteredArticles(filter) {
+        return this.requester.getJSON(`/api/article/search/${filter}`);
+    }
+
+    getArticlesByCategory(category){
+        return this.requester.getJSON(`/api/article/category/${category}`);
     }
 }

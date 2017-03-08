@@ -1,11 +1,32 @@
-<h1>Register</h1>
-<form id="register-form">
+<div class="row register-container">
+    <div class="col-">
+        <form id="register-form">
+            <h3>REGISTER</h3>
 
-    <input type="text" name="username" id="username" placeholder="Username"><br/>
-    <input type="email" name="email" id="email" placeholder="Email Address"><br/>
-    <input type="text" name="password" id="password" placeholder="Password"><br/>
-    <input type="text" name="confirmedPassword" id="confirmedPassword" placeholder="Confirm Password">
-    <input type="file" name="avatar" id="avatar"><br/>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+            </div>
 
-    <input type="submit" value="submit">
-</form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmedPassword">Confirm password</label>
+                <input type="password" class="form-control" name="confirmedPassword" id="confirmedPassword" placeholder="Confirm Password"
+                    required>
+            </div>
+
+            <label for="avatar" class="btn btn-custom">AVATAR</label>
+            <input type="file" name="avatar" id="avatar" required>
+            <input type="submit" class="btn btn-success btn-submit-form" value="REGISTER">
+        </form>
+    </div>
+</div>

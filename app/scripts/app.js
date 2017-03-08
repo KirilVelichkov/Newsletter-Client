@@ -10,12 +10,14 @@ var router = Sammy('#content', function (context) {
   let utils = new Utils(requester);
 
   let userData = new UserData(requester);
+  let articleData = new ArticleData(requester);
   let adminData = new AdminData(requester);
   let homeData = new HomeData(requester);
 
   let homeController = new HomeController(homeData, template);
+  let articleController = new ArticleController(articleData, template);
   let userController = new UserController(userData, template, utils);
-  let adminController = new AdminController(adminData, template);
+  let adminController = new AdminController(adminData, template, utils);
 
   this.get('/', function (context) {
     context.redirect('#/home');
@@ -23,6 +25,24 @@ var router = Sammy('#content', function (context) {
 
   this.get('#/home', function (context) {
     homeController.loadHomePageTemplate($content, context);
+  });
+
+  this.get('#/home/search/?:query', function (context) {
+    let filter = this.params.query;
+
+    homeController.loadFilteredHomePageTemplate($content, context, filter);
+  });
+
+  this.get('#/home/category/?:category', function (context) {
+    let category = this.params.category;
+
+    homeController.loadArticlesByCategory($content, context, category);
+  });
+
+  this.get('#/article/?:id', function (context) {
+    let id = this.params.id;
+
+    articleController.loadArticleTemplate($content, context, id);
   });
 
   this.get('#/admin', function (context) {
@@ -37,7 +57,7 @@ var router = Sammy('#content', function (context) {
     userController.loadLoginTemplate($content, context);
   });
 
-  this.get('#/update-settings', function (context) {
+  this.get('#/profile', function (context) {
     userController.loadUpdateSettingsTemplate($content, context);
   });
 
@@ -46,6 +66,14 @@ var router = Sammy('#content', function (context) {
   $('#logout').on('click', function () {
     localStorage.removeItem('jwt-token');
     utils.toggleUserControlElements();
+  });
+
+  $('#search-box').keyup(function (e) {
+    if (e.keyCode === 13) {
+      var searchQuery = $('#search-box').val();
+
+      window.location.replace(`#/home/search/${searchQuery}`);
+    }
   });
 
 });
