@@ -24,7 +24,7 @@ class AdminController {
                                 evt.preventDefault();
 
                                 var formData = new FormData($(this)[0]);
-
+                                
                                 _this.adminData.createArticle(formData)
                                     .then((result) => {
                                         console.log(result);

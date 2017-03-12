@@ -15,6 +15,7 @@ class UserController {
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
                 $('#username').focus();
+                $('#register-modal').click();
 
                 $('#register-form').submit(function (evt) {
                     evt.preventDefault();
@@ -24,12 +25,18 @@ class UserController {
                     // TODO add validation
                     _this.userData.register(formData)
                         .then((result) => {
-                            console.log(result);
-
+                            $('#registerModal').modal('hide');
+                            $('.modal-backdrop').hide();
                             context.redirect('#/home');
                         });
 
                     return false;
+                });
+                
+                $('#modal-close-button').on('click', () => {
+                    $('#registerModal').modal('hide');
+                    $('.modal-backdrop').hide();
+                    context.redirect('#/home');
                 });
             });
     }
@@ -42,6 +49,7 @@ class UserController {
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
                 $('#username').focus();
+                $('#login-modal').click();
 
                 $('#login-form').submit(function (evt) {
                     evt.preventDefault();
@@ -51,20 +59,33 @@ class UserController {
                         password: $('#password').val()
                     };
 
-                    // TODO add validation
                     _this.userData.login(data)
                         .then((result) => {
 
                             if (result.success) {
                                 localStorage.setItem('jwt-token', result.token);
                                 _this.utils.toggleUserControlElements();
+                                $('#loginModal').modal('hide');
+                                $('.modal-backdrop').hide();
                                 context.redirect('#/home');
                             } else {
-                                alert('invalid username or password!');
+                                $('.login-error span')
+                                    .fadeIn(200)
+                                    .fadeOut(200)
+                                    .fadeIn(200)
+                                    .fadeOut(200)
+                                    .fadeIn(200)
+                                    .removeClass('hidden');
                             }
                         });
 
                     return false;
+                });
+
+                $('#modal-close-button').on('click', () => {
+                    $('#loginModal').modal('hide');
+                    $('.modal-backdrop').hide();
+                    context.redirect('#/home');
                 });
             });
     }
@@ -77,7 +98,7 @@ class UserController {
             .then((resultTemplate) => {
                 $content.html(resultTemplate);
                 $('#email').focus();
-                
+
                 $('#updateSettings-form').submit(function (evt) {
                     evt.preventDefault();
 

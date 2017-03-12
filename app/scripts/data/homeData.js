@@ -13,7 +13,7 @@ class HomeData {
         return this.requester.getJSON(`/api/article/search/${filter}`);
     }
 
-    getArticlesByCategory(category){
+    getArticlesByCategory(category) {
         return this.requester.getJSON(`/api/article/category/${category}`);
     }
 }

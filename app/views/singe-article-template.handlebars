@@ -2,7 +2,149 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#/home">Home</a></li>
         <li class="breadcrumb-item"><a class="breadcrumb-item-category" href="#/home/category/{{category}}">{{category}}</a></li>
-        <li class="breadcrumb-item">{{title}}</li>
+        <li class="breadcrumb-item">{{article.title}}</li>
     </ol>
 </div>
-<h1 style="color:white">SINGLE ARTICLE</h1>
+
+<div class="detailed-article-container">
+    <div class="row no-gutters">
+        <div class="col- da-details">
+            <div class="da-image-container">
+
+                <div class="da-category">
+                    {{article.category}}
+                </div>
+                <img class="da-image" src="http://localhost:1337/api/article/image/{{article.image}}">
+                <div class="da-date">
+                    <span>{{article.date.month}}</span>
+                    <span> {{article.date.day}}</span>
+                </div>
+
+            </div>
+
+            <div class="da-tags-container">
+                <h3>TAGS</h3>
+                {{#each article.tags}}
+                <span>{{this}}</span> {{/each}}
+            </div>
+
+            <div class="da-share-icons-container">
+                <h3>SHARE THIS</h3>
+                <span>
+                    <a target="popup" onclick="window.open('http://twitter.com/intent/tweet?status={{article.title}}+http://localhost:9000/#/article/{{article._id}}','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                        href="http://twitter.com/intent/tweet?status={{article.title}}+http://localhost:9000/#/article/{{article._id}}">
+                     <img src="../images/twitter.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a target="popup" onclick="window.open('http://www.facebook.com/share.php?u=http://localhost:9000/#/article/{{article._id}}&title={{article.title}}','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                        href="http://www.facebook.com/share.php?u=http://localhost:9000/#/article/{{article._id}}&title={{article.title}}">
+                     <img src="../images/facebook.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a href="#">
+                     <img src="../images/share-icon3.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a href="#">
+                     <img src="../images/share-icon4.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a href="#">
+                     <img src="../images/share-icon5.png">
+                    </a>
+                </span>
+            </div>
+        </div>
+
+        <div class="col- da-content-container">
+            <h1>TITLE</h1>
+
+            <div class="da-author">
+                POSTED BY {{article.author}} IN {{article.category}} | {{article.comments.length}} COMMENTS
+            </div>
+
+            <div class="da-content">
+                {{article.content}}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters justify-content-end article-comments-container-parent">
+    <div class="article-comments-container">
+        <div class="comments-count">
+            {{article.comments.length}} COMMENTS
+        </div>
+
+        <div class="comments-list-container">
+            {{#each article.comments}}
+            <div class="comments-list-item row no-gutters">
+                <div class="col- comment-item-info">
+                    <div class="comment-item-image-container">
+                        <img class="comment-author-avatar" src="http://localhost:1337/api/article/image/{{this.authorAvatar}}">
+                        <div class="comment-date">
+                            <span>{{this.date.month}}</span>
+                            <span>{{this.date.day}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col- comment-item-contnet-container">
+                    <h4>{{this.author}}</h4>
+                    <div class="comment-item-content">
+                        {{this.content}}
+                    </div>
+                </div>
+
+                <input type="button" class="reply-comment-button add-comment-toggler hidden" value="REPLY">
+            </div>
+            <div class="reply-comment-container add-comment-toggler hidden" style="display: none;">
+                <div>REPLY</div>
+
+                <div class="rc-custom-form">
+                    <textarea name="content" rows="4"></textarea>
+                    <div>
+                        <input type="button" value="SUBMIT" class="custom-form-submit" data-id="{{this._id}}">
+                    </div>
+                </div>
+            </div>
+
+            {{#each replies}}
+            <div class="replied-comments-list-item row no-gutters">
+                <div class="col- replied-comment-item-info">
+                    <div class="replied-comment-item-image-container">
+                        <img class="comment-author-avatar" src="http://localhost:1337/api/article/image/{{this.authorAvatar}}">
+                        <div class="comment-date">
+                            <span>{{this.date.month}}</span>
+                            <span>{{this.date.day}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col- replied-comment-item-contnet-container">
+                    <h4>{{this.author}}</h4>
+                    <div class="replied-comment-item-content">
+                        {{this.content}}
+                    </div>
+                </div>
+            </div>
+            {{/each}} {{/each}}
+        </div>
+        <div class="add-comment-container add-comment-toggler hidden">
+            <div>LEAVE A COMMENT</div>
+            <div class="rc-custom-form">
+                <textarea name="content" id="comment-box" rows="8"></textarea>
+                <div>
+                    <input type="button" id="submit-comment" value="SUBMIT">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

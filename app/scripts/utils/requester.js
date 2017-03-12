@@ -44,17 +44,22 @@ class Requester {
 
         //send token to the server
         let token = window.localStorage.getItem('jwt-token');
-
+        
         let promise = new Promise((resolve, reject) => {
             let headers = options.headers || {};
             headers.authrorization = token;
 
             $.ajax({
                 url: REQUEST_URL + url,
-                headers,
-                method: 'POST',
-                contentType: 'application/json',
+                type: 'POST',
                 data: JSON.stringify(body),
+                async: true,
+                cache: false,
+                processData: false,
+                headers: {
+                    'authorization': token
+                },
+                contentType: 'application/json',
                 success(response) {
                     resolve(response);
                 },
@@ -79,9 +84,9 @@ class Requester {
                 },
                 async: true,
                 cache: false,
+                processData: false,
                 contentType: false,
                 enctype: 'multipart/form-data',
-                processData: false,
                 success(response) {
                     resolve(response);
                 },

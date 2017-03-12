@@ -1,20 +1,36 @@
-<div class="row login-container">
-  <div class="col-">
-    
-    <form id="login-form">
-      <h3>LOGIN</h3>
+<button type="button" id="login-modal" class="btn btn-primary hidden" data-toggle="modal" data-target="#loginModal">Open modal for @mdo</button>
 
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+<div class="modal fade custom-login-modal" id="loginModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="custom-modal-header">LOGIN</h3>
+        <button id="modal-close-button" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form id="login-form" class="custom-form">
+        <div class="modal-body">
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="text" class="form-control" name="password" id="password" placeholder="Password" required>
-      </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+          </div>
 
-      <input type="submit" class="btn btn-success btn-submit-form" value="LOGIN">
-    </form>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+          </div>
+
+          <div class="form-group login-error">
+            <span class="hidden">Invalid username or password!</span>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-start">
+          <input type="submit" class="btn btn-success btn-submit-form" value="LOGIN">
+        </div>
+      </form>
+    </div>
   </div>
 </div>

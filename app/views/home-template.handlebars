@@ -1,31 +1,32 @@
 <div class="row articles-containter">
     {{#each this}}
     <div class="col- articles-single-article">
-        <div class="single-article-image-containter">
-            <div class="single-article-category">
-                {{category}}
-            </div>
-            <a href="#/article/{{_id}}">
+        <a href="#/article/{{_id}}">
+            <div class="single-article-image-containter">
+                <div class="single-article-category">
+                    {{category}}
+                </div>
                 <img class="single-article-image" src="http://localhost:1337/api/article/image/{{image}}" />
-            </a>
-            <div class="single-article-date">
-                {{date.month}} {{date.day}}
+                <div class="single-article-date">
+                    <span>{{date.month}}</span>
+                    <span> {{date.day}}</span>
+                </div>
             </div>
-        </div>
 
-        <div class="single-article-title">
-            {{title}}
-        </div>
+            <div class="single-article-title" title="{{{title}}}">
+                {{{title}}}
+            </div>
 
-        <div class="single-article-author">
-            AUTHOR {{author}}
-        </div>
+            <div class="single-article-author">
+                AUTHOR {{author}}
+            </div>
 
-        <div class="single-article-content">
-            {{content}}
-        </div>
+            <div class="single-article-content">
+                {{{content}}}
+            </div>
 
-        <img class="bottom-line" src="../images/bottom-line.jpg">
+            <img class="bottom-line" src="../images/bottom-line.jpg">
+        </a>
     </div>
     {{/each}}
 </div>
@@ -46,3 +47,4 @@
         <a href="#/1">»</a>
     </div>
 </div>
+

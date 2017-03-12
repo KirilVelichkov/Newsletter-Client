@@ -24,7 +24,9 @@ class HomeController {
                     x.date = {
                         monthIndex: date.getMonth(),
                         month: months[date.getMonth()],
-                        day: date.getDate()
+                        day: date.getDate(),
+                        hour: date.getHours(),
+                        minutes: date.getMinutes()
                     };
 
                     return x;
@@ -43,6 +45,18 @@ class HomeController {
                         return 1;
                     }
 
+                    if (a.date.hour > b.date.hour) {
+                        return -1;
+                    } else if (a.date.hour < b.date.hour) {
+                        return 1;
+                    }
+
+                    if (a.date.minutes > b.date.minutes) {
+                        return -1;
+                    } else if (a.date.minutes < b.date.minutes) {
+                        return 1;
+                    }
+
                     return 0;
                 });
 
@@ -52,7 +66,6 @@ class HomeController {
                 $content.html(template(articles));
                 $('#search-box').focus();
             });
-
     }
 
     loadFilteredHomePageTemplate(content, context, filter) {
@@ -70,7 +83,9 @@ class HomeController {
                     x.date = {
                         monthIndex: date.getMonth(),
                         month: months[date.getMonth()],
-                        day: date.getDate()
+                        day: date.getDate(),
+                        hour: date.getHours(),
+                        minutes: date.getMinutes()
                     };
 
                     return x;
@@ -89,6 +104,17 @@ class HomeController {
                         return 1;
                     }
 
+                    if (a.date.hour > b.date.hour) {
+                        return -1;
+                    } else if (a.date.hour < b.date.hour) {
+                        return 1;
+                    }
+
+                    if (a.date.minutes > b.date.minutes) {
+                        return -1;
+                    } else if (a.date.minutes < b.date.minutes) {
+                        return 1;
+                    }
                     return 0;
                 });
 
@@ -115,7 +141,9 @@ class HomeController {
                     x.date = {
                         monthIndex: date.getMonth(),
                         month: months[date.getMonth()],
-                        day: date.getDate()
+                        day: date.getDate(),
+                        hour: date.getHours(),
+                        minutes: date.getMinutes()
                     };
 
                     return x;
@@ -131,6 +159,18 @@ class HomeController {
                     if (a.date.day > b.date.day) {
                         return -1;
                     } else if (a.date.day < b.date.day) {
+                        return 1;
+                    }
+
+                    if (a.date.hour > b.date.hour) {
+                        return -1;
+                    } else if (a.date.hour < b.date.hour) {
+                        return 1;
+                    }
+
+                    if (a.date.minutes > b.date.minutes) {
+                        return -1;
+                    } else if (a.date.minutes < b.date.minutes) {
                         return 1;
                     }
 

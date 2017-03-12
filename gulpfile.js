@@ -7,6 +7,8 @@ const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 
 const $ = gulpLoadPlugins();
+console.log($);
+
 const reload = browserSync.reload;
 
 var dev = true;

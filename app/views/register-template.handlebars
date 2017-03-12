@@ -1,6 +1,51 @@
-<div class="row register-container">
+<button type="button" id="register-modal" class="btn btn-primary hidden" data-toggle="modal" data-target="#registerModal">Open modal for @mdo</button>
+
+<div class="modal fade custom-login-modal" data-backdrop="static" data-keyboard="false" id="registerModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="custom-modal-header">REGISTER</h3>
+                <button id="modal-close-button" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="register-form" class="custom-form">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmedPassword">Confirm password</label>
+                        <input type="password" class="form-control" name="confirmedPassword" id="confirmedPassword" placeholder="Confirm Password"
+                            required>
+                    </div>
+
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <label for="avatar" class="btn btn-custom">AVATAR</label>
+                    <input type="file" name="avatar" id="avatar" required>
+                    <input type="submit" class="btn btn-success btn-submit-form" value="REGISTER"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{!--<div class="row register-container">
     <div class="col-">
-        <form id="register-form">
+        <form id="register-form" class="custom-form">
             <h3>REGISTER</h3>
 
             <div class="form-group">
@@ -29,4 +74,4 @@
             <input type="submit" class="btn btn-success btn-submit-form" value="REGISTER">
         </form>
     </div>
-</div>
+</div>--}}

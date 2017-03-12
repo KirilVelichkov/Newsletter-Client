@@ -1,6 +1,5 @@
 'use strict';
 
-
 var router = Sammy('#content', function (context) {
   let $content = $('#content');
 
@@ -15,7 +14,7 @@ var router = Sammy('#content', function (context) {
   let homeData = new HomeData(requester);
 
   let homeController = new HomeController(homeData, template);
-  let articleController = new ArticleController(articleData, template);
+  let articleController = new ArticleController(articleData, template, utils);
   let userController = new UserController(userData, template, utils);
   let adminController = new AdminController(adminData, template, utils);
 
@@ -61,6 +60,10 @@ var router = Sammy('#content', function (context) {
     userController.loadUpdateSettingsTemplate($content, context);
   });
 
+  this.get('', function (context) {
+    context.redirect('#/home');
+  });
+
   utils.toggleUserControlElements();
 
   $('#logout').on('click', function () {
@@ -76,6 +79,15 @@ var router = Sammy('#content', function (context) {
     }
   });
 
+  $('.nav-link').on('click', function () {
+    $('.nav-link').each(function () {
+      $(this).removeClass('nav-link-active');
+    });
+
+    $(this).addClass('nav-link-active');
+  });
+
 });
 
+window.refreshState = () => router.refresh();
 router.run('#/');
