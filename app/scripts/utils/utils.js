@@ -53,4 +53,52 @@ class Utils {
     getUserRoles() {
         return this.requester.getJSON('/api/auth/getUserRoles');
     }
+
+    sortArticles(unsortedArticles) {
+        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+        let articlesToSort = unsortedArticles.map((x) => {
+            let date = new Date(x.date);
+
+            x.date = {
+                monthIndex: date.getMonth(),
+                month: months[date.getMonth()],
+                day: date.getDate(),
+                hour: date.getHours(),
+                minutes: date.getMinutes()
+            };
+
+            return x;
+        });
+
+        articlesToSort = articlesToSort.sort(function (a, b) {
+            if (a.date.monthIndex > b.date.monthIndex) {
+                return -1;
+            } else if (a.date.monthIndex < b.date.monthIndex) {
+                return 1;
+            }
+
+            if (a.date.day > b.date.day) {
+                return -1;
+            } else if (a.date.day < b.date.day) {
+                return 1;
+            }
+
+            if (a.date.hour > b.date.hour) {
+                return -1;
+            } else if (a.date.hour < b.date.hour) {
+                return 1;
+            }
+
+            if (a.date.minutes > b.date.minutes) {
+                return -1;
+            } else if (a.date.minutes < b.date.minutes) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        return articlesToSort;
+    }
 }

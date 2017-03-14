@@ -9,6 +9,10 @@ class HomeData {
         return this.requester.getJSON('/api/article/all/count');
     }
 
+    getArticlesCountByCategory(category) {
+        return this.requester.getJSON(`/api/article/all/count/${category}`);
+    }
+
     getAllArticles(pageNumber, pageSize) {
         return this.requester.getJSON(`/api/article/all/${pageNumber}&${pageSize}`);
     }
@@ -17,7 +21,7 @@ class HomeData {
         return this.requester.getJSON(`/api/article/search/${filter}`);
     }
 
-    getArticlesByCategory(category) {
-        return this.requester.getJSON(`/api/article/category/${category}`);
+    getArticlesByCategory(category, pageNumber, pageSize) {
+        return this.requester.getJSON(`/api/article/category/${category}&${pageNumber}&${pageSize}`);
     }
 }

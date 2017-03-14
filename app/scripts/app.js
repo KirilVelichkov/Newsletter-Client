@@ -13,7 +13,7 @@ var router = Sammy('#content', function (context) {
   let adminData = new AdminData(requester);
   let homeData = new HomeData(requester);
 
-  let homeController = new HomeController(homeData, template);
+  let homeController = new HomeController(homeData, template, utils);
   let articleController = new ArticleController(articleData, template, utils);
   let userController = new UserController(userData, template, utils);
   let adminController = new AdminController(adminData, template, utils);
@@ -39,10 +39,12 @@ var router = Sammy('#content', function (context) {
     homeController.loadFilteredHomePageTemplate($content, context, filter);
   });
 
-  this.get('#/home/category/?:category', function (context) {
+  this.get('#/home/category/?:category&:pageNumber&:pageSize', function (context) {
     let category = this.params.category;
-
-    homeController.loadArticlesByCategory($content, context, category);
+    let pageNumber = this.params.pageNumber;
+    let pageSize = this.params.pageSize;
+    
+    homeController.loadArticlesByCategory($content, context, category, pageNumber, pageSize);
   });
 
   this.get('#/article/?:id', function (context) {

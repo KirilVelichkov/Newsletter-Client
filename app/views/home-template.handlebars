@@ -30,7 +30,7 @@
     </div>
     {{/each}}
 </div>
-
+{{#if pagination}}
 <div class="row pagination-container no-gutters">
     <div class="d-flex justify-content-start" id="previous">
         <a href="#/home/1&{{pageSize}}">«</a>
@@ -46,3 +46,4 @@
         <a href="#/home/{{count}}&{{pageSize}}">»</a>
     </div>
 </div>
+{{/if}}

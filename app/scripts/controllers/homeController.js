@@ -4,9 +4,10 @@
 
 
 class HomeController {
-    constructor(homeData, template) {
+    constructor(homeData, template, utils) {
         this.homeData = homeData;
         this.template = template;
+        this.utils = utils;
     }
 
     loadHomePageTemplate(content, context, pageNumber, pageSize) {
@@ -14,7 +15,6 @@ class HomeController {
         let _this = this;
         let articles;
         let articlesCount;
-        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         _this.homeData.getArticlesCount()
             .then((count) => {
@@ -25,47 +25,7 @@ class HomeController {
                 return _this.homeData.getAllArticles(pageNumber, pageSize);
             })
             .then((foundArticles) => {
-                articles = foundArticles.map((x) => {
-                    let date = new Date(x.date);
-
-                    x.date = {
-                        monthIndex: date.getMonth(),
-                        month: months[date.getMonth()],
-                        day: date.getDate(),
-                        hour: date.getHours(),
-                        minutes: date.getMinutes()
-                    };
-
-                    return x;
-                });
-
-                articles = articles.sort(function (a, b) {
-                    if (a.date.monthIndex > b.date.monthIndex) {
-                        return -1;
-                    } else if (a.date.monthIndex < b.date.monthIndex) {
-                        return 1;
-                    }
-
-                    if (a.date.day > b.date.day) {
-                        return -1;
-                    } else if (a.date.day < b.date.day) {
-                        return 1;
-                    }
-
-                    if (a.date.hour > b.date.hour) {
-                        return -1;
-                    } else if (a.date.hour < b.date.hour) {
-                        return 1;
-                    }
-
-                    if (a.date.minutes > b.date.minutes) {
-                        return -1;
-                    } else if (a.date.minutes < b.date.minutes) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
+                articles = _this.utils.sortArticles(foundArticles);
 
                 return _this.template.getTemplate('home-template');
             })
@@ -73,7 +33,7 @@ class HomeController {
                 let count = Math.round(articlesCount / pageSize);
                 let pageNumbers = Array.from({ length: count }, (v, k) => k + 1);
 
-                $content.html(template({ articles, pageNumbers, pageSize, count }));
+                $content.html(template({ articles, pageNumbers, pageSize, count, pagination: true }));
                 $('#search-box').focus();
             });
     }
@@ -82,119 +42,47 @@ class HomeController {
         let $content = content;
         let _this = this;
         let articles;
-        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         this.homeData.getFilteredArticles(filter)
             .then((foundArticles) => {
-
-                articles = foundArticles.map((x) => {
-                    let date = new Date(x.date);
-
-                    x.date = {
-                        monthIndex: date.getMonth(),
-                        month: months[date.getMonth()],
-                        day: date.getDate(),
-                        hour: date.getHours(),
-                        minutes: date.getMinutes()
-                    };
-
-                    return x;
-                });
-
-                articles = articles.sort(function (a, b) {
-                    if (a.date.monthIndex > b.date.monthIndex) {
-                        return -1;
-                    } else if (a.date.monthIndex < b.date.monthIndex) {
-                        return 1;
-                    }
-
-                    if (a.date.day > b.date.day) {
-                        return -1;
-                    } else if (a.date.day < b.date.day) {
-                        return 1;
-                    }
-
-                    if (a.date.hour > b.date.hour) {
-                        return -1;
-                    } else if (a.date.hour < b.date.hour) {
-                        return 1;
-                    }
-
-                    if (a.date.minutes > b.date.minutes) {
-                        return -1;
-                    } else if (a.date.minutes < b.date.minutes) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                articles = _this.utils.sortArticles(foundArticles);
 
                 return this.template.getTemplate('home-template');
             })
             .then((template) => {
-                $content.html(template(articles));
+                $content.html(template({ articles, pagination: false }));
                 $('#search-box').focus();
             });
     }
 
-    loadArticlesByCategory(content, context, category) {
+    loadArticlesByCategory(content, context, category, pageNumber, pageSize) {
         let $content = content;
         let _this = this;
         let articles;
-        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        let articlesCount;
 
-        this.homeData.getArticlesByCategory(category)
+        this.homeData.getArticlesCountByCategory(category)
+            .then((count) => {
+                articlesCount = count;
+                return articlesCount;
+            })
+            .then(() => {
+                return _this.homeData.getArticlesByCategory(category, pageNumber, pageSize);
+            })
             .then((foundArticles) => {
-
-                articles = foundArticles.map((x) => {
-                    let date = new Date(x.date);
-
-                    x.date = {
-                        monthIndex: date.getMonth(),
-                        month: months[date.getMonth()],
-                        day: date.getDate(),
-                        hour: date.getHours(),
-                        minutes: date.getMinutes()
-                    };
-
-                    return x;
-                });
-
-                articles = articles.sort(function (a, b) {
-                    if (a.date.monthIndex > b.date.monthIndex) {
-                        return -1;
-                    } else if (a.date.monthIndex < b.date.monthIndex) {
-                        return 1;
-                    }
-
-                    if (a.date.day > b.date.day) {
-                        return -1;
-                    } else if (a.date.day < b.date.day) {
-                        return 1;
-                    }
-
-                    if (a.date.hour > b.date.hour) {
-                        return -1;
-                    } else if (a.date.hour < b.date.hour) {
-                        return 1;
-                    }
-
-                    if (a.date.minutes > b.date.minutes) {
-                        return -1;
-                    } else if (a.date.minutes < b.date.minutes) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
-
+                articles = _this.utils.sortArticles(foundArticles);
                 return this.template.getTemplate('article-category-template');
             })
             .then((template) => {
+                let count = Math.round(articlesCount / pageSize);
+                let pageNumbers = Array.from({ length: count }, (v, k) => k + 1);
+
                 category = category.toLowerCase().replace(/(^| )(\w)/g, function (x) {
                     return x.toUpperCase();
                 });
+                console.log(pageNumbers);
 
-                $content.html(template({ articles, category }));
+                $content.html(template({ articles, category, pageNumbers, pageSize, count, pagination: true }));
                 $('#search-box').focus();
             });
     }
