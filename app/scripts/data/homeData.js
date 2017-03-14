@@ -5,8 +5,12 @@ class HomeData {
         this.requester = requester;
     }
 
-    getAllArticles() {
-        return this.requester.getJSON('/api/article/all');
+    getArticlesCount() {
+        return this.requester.getJSON('/api/article/all/count');
+    }
+
+    getAllArticles(pageNumber, pageSize) {
+        return this.requester.getJSON(`/api/article/all/${pageNumber}&${pageSize}`);
     }
 
     getFilteredArticles(filter) {

@@ -19,11 +19,18 @@ var router = Sammy('#content', function (context) {
   let adminController = new AdminController(adminData, template, utils);
 
   this.get('/', function (context) {
-    context.redirect('#/home');
+    context.redirect('#/home/1&5');
   });
 
   this.get('#/home', function (context) {
-    homeController.loadHomePageTemplate($content, context);
+    context.redirect('#/home/1&5');
+  });
+
+  this.get('#/home/?:pageNumber&:pageSize', function (context) {
+    let pageNumber = this.params.pageNumber;
+    let pageSize = this.params.pageSize;
+
+    homeController.loadHomePageTemplate($content, context, pageNumber, pageSize);
   });
 
   this.get('#/home/search/?:query', function (context) {

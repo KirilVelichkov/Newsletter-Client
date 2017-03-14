@@ -9,15 +9,22 @@ class HomeController {
         this.template = template;
     }
 
-    loadHomePageTemplate(content, context) {
+    loadHomePageTemplate(content, context, pageNumber, pageSize) {
         let $content = content;
         let _this = this;
         let articles;
+        let articlesCount;
         let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-        this.homeData.getAllArticles()
+        _this.homeData.getArticlesCount()
+            .then((count) => {
+                articlesCount = count;
+                return articlesCount;
+            })
+            .then(() => {
+                return _this.homeData.getAllArticles(pageNumber, pageSize);
+            })
             .then((foundArticles) => {
-
                 articles = foundArticles.map((x) => {
                     let date = new Date(x.date);
 
@@ -60,10 +67,13 @@ class HomeController {
                     return 0;
                 });
 
-                return this.template.getTemplate('home-template');
+                return _this.template.getTemplate('home-template');
             })
             .then((template) => {
-                $content.html(template(articles));
+                let count = Math.round(articlesCount / pageSize);
+                let pageNumbers = Array.from({ length: count }, (v, k) => k + 1);
+
+                $content.html(template({ articles, pageNumbers, pageSize, count }));
                 $('#search-box').focus();
             });
     }

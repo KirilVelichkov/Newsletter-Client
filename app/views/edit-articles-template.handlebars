@@ -1,0 +1,47 @@
+{{#each articles}}
+<div class="edit-article-container">
+    <div class="form-updated hidden">UPDATED</div>
+    <form class="edit-article-form" data-id="{{_id}}">
+        <div class="row">
+
+            <div>
+                <img src="http://localhost:1337/api/article/image/{{image}}" class="actual-article-image">
+                <label for="ID{{_id}}" class="btn btn-custom">IMAGE</label>
+                <input id="ID{{_id}}" type="file" name="image" class="edit-form-file">
+            </div>
+
+            <div>
+                <label>EDIT TITLE</label>
+                <input type="text" name="title" placeholder="Title" class="edit-form-title custom-form-item" value="{{title}}">
+            </div>
+
+            <div>
+                <label>EDIT CATEGORY</label>
+                <select name="category" class="edit-form-category custom-form-item">
+                    <option value="SPORT">Sport</option>
+                    <option value="ENTERTAINMENT">Entertainment</option>
+                    <option value="POLITICS">Politics</option>
+                    <option value="HEALTH">Health</option>
+                    <option value="TECHNOLOGY">Technology</option>
+                </select>
+            </div>
+
+            <div>
+                <label>EDIT CONTENT</label>
+                <textarea name="content" class="edit-form-category custom-form-item">{{content}}</textarea>
+            </div>
+
+            <div>
+                <label>DELETED</label> {{#if isDeleted}}
+                <input type="checkbox" name="isDeleted" checked> {{else}}
+                <input type="checkbox" name="isDeleted"> {{/if}}
+            </div>
+
+            <div>
+                <label></label>
+                <input type="submit" value="UPDATE" class="btn btn-success btn-update-article">
+            </div>
+        </div>
+    </form>
+</div>
+{{/each}}
