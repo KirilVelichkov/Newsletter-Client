@@ -10,7 +10,7 @@ class AdminData {
     }
 
     getAllArticles() {
-        return this.requester.getJSON('/api/article/all');
+        return this.requester.getJSON('/api/article/allArticles');
     }
 
     updateArticle(articleId, data) {

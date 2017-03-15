@@ -22,7 +22,6 @@ class UserController {
 
                     var formData = new FormData($(this)[0]);
 
-                    // TODO add validation
                     _this.userData.register(formData)
                         .then((result) => {
                             $('#registerModal').modal('hide');
@@ -93,7 +92,8 @@ class UserController {
     loadUpdateSettingsTemplate(content, context) {
         let $content = content;
         let _this = this;
-
+        console.log('sss');
+        
         _this.template.getTemplate('update-settings-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);

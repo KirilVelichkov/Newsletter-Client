@@ -40,15 +40,15 @@
 
 <div class="row pagination-container no-gutters">
     <div class="d-flex justify-content-start" id="previous">
-        <a href="#/home/category/{{category}}&1&{{pageSize}}">«</a>
+        <a href="#/home/category/?category={{category}}&pageNumber=1&pageSize={{pageSize}}">«</a>
     </div>
 
     <div class="col d-flex justify-content-center pages">
         {{#each pageNumbers}}
-        <a href="#/home/category/{{../category}}&{{this}}&{{../pageSize}}">{{this}}</a> {{/each}}
+        <a href="#/home/category/?category={{../category}}&pageNumber={{this}}&pageSize={{../pageSize}}">{{this}}</a> {{/each}}
     </div>
 
     <div class="d-flex justify-content-end" id="next">
-        <a href="#/home/category/{{category}}&{{count}}&{{pageSize}}">»</a>
+        <a href="#/home/category/?category={{category}}&pageNumber={{count}}&pageSize={{pageSize}}">»</a>
     </div>
 </div>

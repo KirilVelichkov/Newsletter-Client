@@ -18,15 +18,11 @@ var router = Sammy('#content', function (context) {
   let userController = new UserController(userData, template, utils);
   let adminController = new AdminController(adminData, template, utils);
 
-  this.get('/', function (context) {
-    context.redirect('#/home/1&5');
-  });
-
   this.get('#/home', function (context) {
-    context.redirect('#/home/1&5');
+    context.redirect('#/home/?pageNumber=1&pageSize=5');
   });
 
-  this.get('#/home/?:pageNumber&:pageSize', function (context) {
+  this.get('#/home/?', function (context) {
     let pageNumber = this.params.pageNumber;
     let pageSize = this.params.pageSize;
 
@@ -39,11 +35,11 @@ var router = Sammy('#content', function (context) {
     homeController.loadFilteredHomePageTemplate($content, context, filter);
   });
 
-  this.get('#/home/category/?:category&:pageNumber&:pageSize', function (context) {
+  this.get('#/home/category/?', function (context) {
     let category = this.params.category;
     let pageNumber = this.params.pageNumber;
     let pageSize = this.params.pageSize;
-    
+
     homeController.loadArticlesByCategory($content, context, category, pageNumber, pageSize);
   });
 
@@ -70,7 +66,7 @@ var router = Sammy('#content', function (context) {
   });
 
   this.get('', function (context) {
-    context.redirect('#/home');
+    context.redirect('#/home/?pageNumber=1&pageSize=5');
   });
 
   utils.toggleUserControlElements();

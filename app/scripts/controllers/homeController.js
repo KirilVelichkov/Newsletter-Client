@@ -26,7 +26,7 @@ class HomeController {
             })
             .then((foundArticles) => {
                 articles = _this.utils.sortArticles(foundArticles);
-
+                
                 return _this.template.getTemplate('home-template');
             })
             .then((template) => {

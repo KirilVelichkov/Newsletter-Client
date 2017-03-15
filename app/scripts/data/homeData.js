@@ -14,7 +14,7 @@ class HomeData {
     }
 
     getAllArticles(pageNumber, pageSize) {
-        return this.requester.getJSON(`/api/article/all/${pageNumber}&${pageSize}`);
+        return this.requester.getJSON(`/api/article/all/pageAndSize/?pageNumber=${pageNumber}&pageSize=${pageSize}`);
     }
 
     getFilteredArticles(filter) {
@@ -22,6 +22,6 @@ class HomeData {
     }
 
     getArticlesByCategory(category, pageNumber, pageSize) {
-        return this.requester.getJSON(`/api/article/category/${category}&${pageNumber}&${pageSize}`);
+        return this.requester.getJSON(`/api/article/category/?category=${category}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
     }
 }
