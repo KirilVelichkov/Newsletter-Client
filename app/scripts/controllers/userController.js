@@ -31,7 +31,7 @@ class UserController {
 
                     return false;
                 });
-                
+
                 $('#modal-close-button').on('click', () => {
                     $('#registerModal').modal('hide');
                     $('.modal-backdrop').hide();
@@ -93,7 +93,7 @@ class UserController {
         let $content = content;
         let _this = this;
         console.log('sss');
-        
+
         _this.template.getTemplate('update-settings-template')
             .then((resultTemplate) => {
                 $content.html(resultTemplate);

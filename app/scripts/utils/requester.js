@@ -44,7 +44,7 @@ class Requester {
 
         //send token to the server
         let token = window.localStorage.getItem('jwt-token');
-        
+
         let promise = new Promise((resolve, reject) => {
             let headers = options.headers || {};
             headers.authrorization = token;

@@ -62,7 +62,7 @@ class AdminController {
                                     })
                                     .then((template) => {
                                         $('#articles').html(template({ articles }));
-                                        
+
                                         $('*[id*=ID]').change(function (event) {
                                             let reader = new FileReader();
                                             let $image = $(this).siblings('img');
@@ -73,14 +73,14 @@ class AdminController {
                                             reader.readAsDataURL(this.files[0]);
                                         });
 
-                                        $('.edit-article-form').submit(function (evt) { 
+                                        $('.edit-article-form').submit(function (evt) {
                                             evt.preventDefault();
-                                            
+
                                             let self = this;
                                             let articleId = $(this).data('id');
                                             console.log(articleId);
-                                            
-                                            
+
+
                                             let formData = new FormData($(this)[0]);
 
                                             _this.adminData.updateArticle(articleId, formData)

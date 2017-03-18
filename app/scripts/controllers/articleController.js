@@ -75,7 +75,7 @@ class ArticleController {
                     .catch(() => {
                         $('.add-comment-toggler').addClass('hidden');
                     });
-                    
+
                 $('.da-image-container').on('mouseenter', function () {
                     $(this).addClass('image-large');
                 });
