@@ -1,5 +1,5 @@
 'use strict';
-const REQUEST_URL = 'http://localhost:1337';
+const REQUEST_URL = 'https://newsletter-project.herokuapp.com';
 
 class Requester {
     get(url) {

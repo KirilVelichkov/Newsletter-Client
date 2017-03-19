@@ -1,0 +1,50 @@
+<div class="row admin-panel-container">
+    <div class="tabs-container">
+        <ul class="nav nav-tabs tabs">
+            <li class="nav-item">
+                <button class="nav-link tab tab-active">CREATE ARTICLE</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link tab">ALL ARTICLES</button>
+            </li>
+        </ul>
+
+        <form id="create-article-form" class="tab-content admin-custom-form">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="custom-form-item ml-15" name="title" id="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea rows="4" class="custom-form-item  ml-15" name="content" id="content" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" class="custom-form-item  ml-15" name="tags" id="tags" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" class="custom-form-item  ml-15" required>
+                    <option selected disabled>Select category</option>
+                    <option value="SPORT">Sport</option>
+                    <option value="ENTERTAINMENT">Entertainment</option>
+                    <option value="POLITICS">Politics</option>
+                    <option value="HEALTH">Health</option>
+                    <option value="TECHNOLOGY">Technology</option>
+                </select>
+            </div>
+
+            <label for="image" class="btn btn-custom ml-15">IMAGE</label>
+            <input type="file" name="image" id="image" required>
+            <input type="submit" class="btn btn-success btn-submit-form" value="CREATE">
+        </form>
+
+        <div class="tab-content all-articles-container hidden" id="articles">
+            <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif" style="height:400px;width:400px;">
+        </div>
+    </div>
+</div>
