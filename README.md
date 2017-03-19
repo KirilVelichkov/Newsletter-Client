@@ -12,3 +12,5 @@
         * Replying to comments
         * Changing profile picture 
         * Changing password and email
+
+# [LIVE DEMO]('https://raw.githack.com/KirilVelichkov/Newsletter-Client/master/dist/index.html')
