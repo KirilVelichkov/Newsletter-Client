@@ -706,8 +706,9 @@ footer{
 }
 
 .footer-widget{
-  width:300px;
+  width:280px;
   margin-top:40px;
+  margin-right:20px;
 }
 
 .footer-widget-header{
@@ -718,8 +719,20 @@ footer{
 
 .footer-widget-content-container{
    font-family: 'Droid Sans', sans-serif;
+   font-size: 13px;
    color: #c4c4c4;
    text-shadow: 1px 1px black  !important;
+   div{
+     cursor:pointer;
+     &:hover{
+       .custom-style-type{
+          color:#9a1d0d;
+       }
+       .footer-widget-content{
+         color: white;
+       }
+     }
+   }
 }
 
 .custom-style-type{
